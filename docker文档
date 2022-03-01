@@ -1,0 +1,24 @@
+FROM php:7.4-fpm-buster
+
+RUN 	curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/refs/tags/5.3.7.tar.gz \ &&
+	cd /tmp \ &&
+	tar xfz /tmp/redis.tar.gz \ &&
+	rm -r /tmp/redis.tar.gz \ &&
+	mkdir -p /usr/src/php/ext\ &&
+	mv /tmp/phpredis-5.3.7 /usr/src/php/ext/redis\ &&
+	docker-php-ext-install redis\ &&
+
+EXPOSE 9002
+
+
+
+
+
+apt-get update
+
+apt install iputils-ping
+
+apt install net-tools
+
+#查看当前系统版本
+cat /etc/issue
